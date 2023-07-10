@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        {% for role in roles %}
+        <p>
+            {{ role.role }}
+            {% if role.is_active %}
+                <span style="color: green;">(Active)</span>
+            {% else %}
+                <span style="color: red;">(Inactive)</span>
+            {% endif %}
+            <a href="{% url 'done:toggle_role' role=role.role %}" class="btn btn-primary">Toggle</a>
+        </p>
+    {% endfor %}
+    </div>
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
